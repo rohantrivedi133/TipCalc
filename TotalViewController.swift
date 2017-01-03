@@ -16,7 +16,14 @@ class TotalViewController: UIViewController {
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
    
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        print("view did appear")
+        totalField.becomeFirstResponder()
+    }
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         self.title = "Total Calculator"
         // Do any additional setup after loading the view.

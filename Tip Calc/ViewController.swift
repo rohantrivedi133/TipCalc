@@ -8,15 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipControl: UISegmentedControl!
     
-    let defaults = UserDefaults.standard
     
+    let defaults = UserDefaults.standard
+
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        print("view did appear")
+        billField.becomeFirstResponder()
+    }
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -56,7 +63,7 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
+        tipLabel.text = String(format: "$%.2f", total)
         totalLabel.text = String(format: "$%.2f" , total)
     }
     @IBAction func changedValue(_ sender: UISegmentedControl)

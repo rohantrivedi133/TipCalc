@@ -16,7 +16,14 @@ class SliderViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipSlider: UISlider!
     
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        print("view did appear")
+        billField.becomeFirstResponder()
+    }
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         self.title = "Slider Tip Calculator"
         // Do any additional setup after loading the view.
